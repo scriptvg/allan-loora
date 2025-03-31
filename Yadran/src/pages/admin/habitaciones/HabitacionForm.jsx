@@ -37,7 +37,7 @@ const HabitacionForm = () => {
                 try {
                     setCargando(true);
                     const habitacion = await habitacionesApi.obtenerHabitacionPorId(id);
-                    
+
                     setFormData({
                         nombre: habitacion.nombre || '',
                         numero: habitacion.numero || '',
@@ -77,7 +77,7 @@ const HabitacionForm = () => {
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
-        
+
         if (type === 'checkbox') {
             // Manejar checkboxes para servicios
             if (checked) {
@@ -106,7 +106,7 @@ const HabitacionForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         const form = e.currentTarget;
         if (form.checkValidity() === false) {
             e.stopPropagation();
@@ -170,8 +170,8 @@ const HabitacionForm = () => {
             <div className="page-header mb-4">
                 <h1 className="mb-2">{isEditando ? 'Editar Habitación' : 'Nueva Habitación'}</h1>
                 <p className="text-muted">
-                    {isEditando 
-                        ? 'Modifique los detalles de la habitación' 
+                    {isEditando
+                        ? 'Modifique los detalles de la habitación'
                         : 'Complete el formulario para crear una nueva habitación'}
                 </p>
             </div>

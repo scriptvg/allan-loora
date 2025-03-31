@@ -40,7 +40,7 @@ const DetalleHabitacion = () => {
 
     const manejarReserva = (e) => {
         e.preventDefault();
-        
+
         // Aquí implementarías la lógica para crear una reserva
         // Por ahora mostramos una alerta con la información
         alert(`Reserva confirmada para ${fechaEntrada} hasta ${fechaSalida} para ${huespedes} huéspedes`);

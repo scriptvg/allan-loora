@@ -167,12 +167,12 @@
     .imagen-principal img {
         height: 300px;
     }
-    
+
     .precio-container {
         text-align: left;
         margin-top: 1rem;
     }
-    
+
     .precio-valor-grande {
         font-size: 2rem;
     }

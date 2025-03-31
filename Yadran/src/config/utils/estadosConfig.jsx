@@ -100,7 +100,7 @@ export const obtenerEstado = (estado, tipo = 'habitacion') => {
                 };
         }
     }
-    
+
     // Configuración de estados para reservas
     if (tipo === 'reserva') {
         switch (estado) {
@@ -142,7 +142,7 @@ export const obtenerEstado = (estado, tipo = 'habitacion') => {
                 };
         }
     }
-    
+
     // Configuración para otros tipos
     return {
         etiqueta: estado || 'Desconocido',

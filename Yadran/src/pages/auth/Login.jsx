@@ -10,35 +10,35 @@ const Login = () => {
     const [contrasenia, setContrasenia] = useState('');
     const [error, setError] = useState('');
     const [submitting, setSubmitting] = useState(false);
-    
+
     const { iniciarSesion } = usarAutenticacion();
     const navigate = useNavigate();
     const location = useLocation();
-    
+
     // Obtener la ruta de redirección o usar la ruta por defecto
     const from = location.state?.from?.pathname || '/';
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         // Validación básica
         if (!email || !contrasenia) {
             setError('Por favor complete todos los campos.');
             return;
         }
-        
+
         // Intentar iniciar sesión
         try {
             setSubmitting(true);
             setError('');
-            
+
             await iniciarSesion(email, contrasenia);
-            
+
             // Redireccionar al usuario después del login exitoso
             navigate(from, { replace: true });
         } catch (err) {
             console.error('Error al iniciar sesión:', err);
-            
+
             if (err.response?.status === 401) {
                 setError('Email o contraseña incorrectos.');
             } else {
@@ -48,7 +48,7 @@ const Login = () => {
             setSubmitting(false);
         }
     };
-    
+
     return (
         <>
             <Header />
@@ -61,9 +61,9 @@ const Login = () => {
                                     <h2 className="h3 mb-3">Iniciar Sesión</h2>
                                     <p className="text-muted">Ingrese a su cuenta para continuar</p>
                                 </div>
-                                
+
                                 {error && <Alert variant="danger">{error}</Alert>}
-                                
+
                                 <Form onSubmit={handleSubmit}>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Email</Form.Label>
@@ -76,7 +76,7 @@ const Login = () => {
                                             required
                                         />
                                     </Form.Group>
-                                    
+
                                     <Form.Group className="mb-4">
                                         <div className="d-flex justify-content-between">
                                             <Form.Label>Contraseña</Form.Label>
@@ -93,7 +93,7 @@ const Login = () => {
                                             required
                                         />
                                     </Form.Group>
-                                    
+
                                     <div className="d-grid">
                                         <Button
                                             variant="primary"
@@ -110,7 +110,7 @@ const Login = () => {
                                         </Button>
                                     </div>
                                 </Form>
-                                
+
                                 <div className="mt-4 text-center">
                                     <p className="mb-0">
                                         ¿No tiene una cuenta? <Link to="/registrarse" className="text-primary text-decoration-none">Regístrese</Link>

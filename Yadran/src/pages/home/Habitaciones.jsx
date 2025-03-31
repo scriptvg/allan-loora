@@ -51,7 +51,7 @@ const Habitaciones = () => {
         // Filtrar por búsqueda
         if (busqueda.trim()) {
             const busquedaLower = busqueda.toLowerCase();
-            resultado = resultado.filter(hab => 
+            resultado = resultado.filter(hab =>
                 hab.nombre?.toLowerCase().includes(busquedaLower) ||
                 hab.descripcion?.toLowerCase().includes(busquedaLower) ||
                 hab.tipo?.toLowerCase().includes(busquedaLower)
@@ -78,8 +78,8 @@ const Habitaciones = () => {
 
         // Filtrar por servicios
         if (filtros.servicios.length > 0) {
-            resultado = resultado.filter(hab => 
-                filtros.servicios.every(servicio => 
+            resultado = resultado.filter(hab =>
+                filtros.servicios.every(servicio =>
                     hab.servicios && hab.servicios.includes(servicio)
                 )
             );
@@ -111,12 +111,12 @@ const Habitaciones = () => {
     };
 
     const tieneFiltrosActivos = () => {
-        return busqueda.trim() !== '' || 
-               filtros.tipo.length > 0 || 
-               filtros.precio.min !== '' || 
-               filtros.precio.max !== '' ||
-               filtros.capacidad.length > 0 ||
-               filtros.servicios.length > 0;
+        return busqueda.trim() !== '' ||
+            filtros.tipo.length > 0 ||
+            filtros.precio.min !== '' ||
+            filtros.precio.max !== '' ||
+            filtros.capacidad.length > 0 ||
+            filtros.servicios.length > 0;
     };
 
     if (cargando) {
@@ -142,7 +142,7 @@ const Habitaciones = () => {
                         </div>
                         <h3>¡Ups! Algo salió mal</h3>
                         <p className="text-muted">{error}</p>
-                        <button 
+                        <button
                             className="btn btn-primary mt-3"
                             onClick={() => window.location.reload()}
                         >
@@ -179,7 +179,7 @@ const Habitaciones = () => {
                     </Col>
                     <Col md={4}>
                         <div className="d-flex justify-content-md-end mt-3 mt-md-0">
-                            <button 
+                            <button
                                 className={`btn ${mostrarFiltros ? 'btn-primary' : 'btn-outline-primary'} toggle-filters-btn`}
                                 onClick={toggleFiltros}
                             >
@@ -187,7 +187,7 @@ const Habitaciones = () => {
                                 {mostrarFiltros ? 'Ocultar Filtros' : 'Mostrar Filtros'}
                             </button>
                             {tieneFiltrosActivos() && (
-                                <button 
+                                <button
                                     className="btn btn-outline-secondary ms-2 reset-filters-btn"
                                     onClick={resetearFiltros}
                                 >
@@ -204,9 +204,9 @@ const Habitaciones = () => {
                         <Col>
                             <Card className="filter-card shadow-sm">
                                 <Card.Body>
-                                    <HabitacionesFiltros 
-                                        filtros={filtros} 
-                                        onChange={handleFiltroChange} 
+                                    <HabitacionesFiltros
+                                        filtros={filtros}
+                                        onChange={handleFiltroChange}
                                     />
                                 </Card.Body>
                             </Card>
@@ -219,26 +219,26 @@ const Habitaciones = () => {
                         <Col>
                             <div className="filter-results">
                                 <span className="results-badge">
-                                    {habitacionesFiltradas.length} 
+                                    {habitacionesFiltradas.length}
                                     {habitacionesFiltradas.length === 1 ? ' habitación encontrada' : ' habitaciones encontradas'}
                                 </span>
-                                
+
                                 {busqueda.trim() && (
                                     <span className="filter-badge">
                                         Búsqueda: {busqueda}
-                                        <button 
-                                            className="filter-remove-btn" 
+                                        <button
+                                            className="filter-remove-btn"
                                             onClick={() => setBusqueda('')}
                                         >
                                             <XCircle size={14} />
                                         </button>
                                     </span>
                                 )}
-                                
+
                                 {filtros.tipo.map(tipo => (
                                     <span key={tipo} className="filter-badge">
                                         Tipo: {tipo}
-                                        <button 
+                                        <button
                                             className="filter-remove-btn"
                                             onClick={() => setFiltros({
                                                 ...filtros,
@@ -249,11 +249,11 @@ const Habitaciones = () => {
                                         </button>
                                     </span>
                                 ))}
-                                
+
                                 {filtros.precio.min && (
                                     <span className="filter-badge">
                                         Precio mínimo: ${filtros.precio.min}
-                                        <button 
+                                        <button
                                             className="filter-remove-btn"
                                             onClick={() => setFiltros({
                                                 ...filtros,
@@ -264,11 +264,11 @@ const Habitaciones = () => {
                                         </button>
                                     </span>
                                 )}
-                                
+
                                 {filtros.precio.max && (
                                     <span className="filter-badge">
                                         Precio máximo: ${filtros.precio.max}
-                                        <button 
+                                        <button
                                             className="filter-remove-btn"
                                             onClick={() => setFiltros({
                                                 ...filtros,
@@ -279,11 +279,11 @@ const Habitaciones = () => {
                                         </button>
                                     </span>
                                 )}
-                                
+
                                 {filtros.capacidad.map(cap => (
                                     <span key={cap} className="filter-badge">
                                         Capacidad: {cap} personas
-                                        <button 
+                                        <button
                                             className="filter-remove-btn"
                                             onClick={() => setFiltros({
                                                 ...filtros,
@@ -294,11 +294,11 @@ const Habitaciones = () => {
                                         </button>
                                     </span>
                                 ))}
-                                
+
                                 {filtros.servicios.map(serv => (
                                     <span key={serv} className="filter-badge">
                                         Servicio: {serv.replace(/_/g, ' ')}
-                                        <button 
+                                        <button
                                             className="filter-remove-btn"
                                             onClick={() => setFiltros({
                                                 ...filtros,
@@ -329,7 +329,7 @@ const Habitaciones = () => {
                                 </div>
                                 <h3>No se encontraron habitaciones</h3>
                                 <p className="text-muted">Intente con diferentes criterios de búsqueda o filtros</p>
-                                <button 
+                                <button
                                     className="btn btn-primary mt-2"
                                     onClick={resetearFiltros}
                                 >

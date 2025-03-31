@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-// CORRECCIÓN: La ruta relativa es muy profunda y puede causar problemas
 import { usarServicios } from '../../../../../../config/hooks/useServicios';
 
 // Datos predeterminados para usar si la API no devuelve datos
@@ -118,11 +117,11 @@ const useServicesPage = () => {
             try {
                 // Intentar obtener servicios de la API
                 let allServices = [];
-                
+
                 try {
                     // Usar la función del hook global para obtener servicios
                     allServices = await serviciosAPI.obtenerServicios();
-                    
+
                     // Si no hay servicios o hay un error, usar datos predeterminados
                     if (!allServices || allServices.length === 0) {
                         allServices = serviciosPredeterminados;
@@ -133,7 +132,7 @@ const useServicesPage = () => {
                     allServices = serviciosPredeterminados;
                     setError("No se pudieron cargar los servicios. Mostrando datos predeterminados.");
                 }
-                
+
                 // Normalizar estructura de datos
                 const normalizedServices = allServices.map(service => ({
                     id: service.id || service._id,
@@ -150,14 +149,14 @@ const useServicesPage = () => {
                         "Estándares de calidad superior"
                     ]
                 }));
-                
+
                 // Configurar los servicios
                 setServices(normalizedServices);
-                
+
                 // Configurar servicios destacados
                 const destacados = normalizedServices.filter(service => service.destacado);
                 setFeaturedServices(destacados.length >= 3 ? destacados : normalizedServices.slice(0, 3));
-                
+
                 // Agrupar servicios por categoría (usando variante como categoría)
                 const grouped = normalizedServices.reduce((groups, service) => {
                     const variant = service.variante || "primary";
@@ -167,16 +166,16 @@ const useServicesPage = () => {
                     groups[variant].push(service);
                     return groups;
                 }, {});
-                
+
                 setGroupedServices(grouped);
             } catch (err) {
                 console.error('Error general al cargar servicios:', err);
                 setServices(serviciosPredeterminados);
-                
+
                 // Establecer servicios destacados predeterminados
                 const destacados = serviciosPredeterminados.filter(service => service.destacado);
                 setFeaturedServices(destacados);
-                
+
                 // Agrupar servicios predeterminados
                 const grouped = serviciosPredeterminados.reduce((groups, service) => {
                     const variant = service.variante || "primary";
@@ -186,7 +185,7 @@ const useServicesPage = () => {
                     groups[variant].push(service);
                     return groups;
                 }, {});
-                
+
                 setGroupedServices(grouped);
                 setError('No pudimos cargar los servicios. Mostrando datos predeterminados.');
             } finally {

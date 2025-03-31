@@ -6,21 +6,21 @@ import { LayoutTextWindow, CalendarCheck, Star, PersonFill, CreditCard, BoxArrow
 const ClienteSidebar = ({ visible }) => {
     const { usuario, cerrarSesion } = usarAutenticacion();
     const location = useLocation();
-    
+
     const menuItems = [
         { path: '/cliente', icon: <LayoutTextWindow size={18} />, label: 'Inicio', exact: true },
         { path: '/cliente/reservas', icon: <CalendarCheck size={18} />, label: 'Mis Reservas' },
         { path: '/cliente/servicios', icon: <Star size={18} />, label: 'Servicios' },
         { path: '/cliente/perfil', icon: <PersonFill size={18} />, label: 'Mi Perfil' }
     ];
-    
+
     const isActive = (path, exact = false) => {
         if (exact) {
             return location.pathname === path;
         }
         return location.pathname.startsWith(path);
     };
-    
+
     return (
         <aside className={`cliente-sidebar ${visible ? 'visible' : 'hidden'}`}>
             <div className="sidebar-header">
@@ -29,7 +29,7 @@ const ClienteSidebar = ({ visible }) => {
                     <span className="logo-text">Portal Cliente</span>
                 </div>
             </div>
-            
+
             <div className="user-info">
                 <div className="user-avatar">
                     {usuario?.imgPerfil ? (
@@ -43,12 +43,12 @@ const ClienteSidebar = ({ visible }) => {
                     <p className="user-role">Cliente</p>
                 </div>
             </div>
-            
+
             <nav className="sidebar-menu">
                 <ul>
                     {menuItems.map((item, index) => (
                         <li key={index}>
-                            <NavLink 
+                            <NavLink
                                 to={item.path}
                                 className={`sidebar-link ${isActive(item.path, item.exact) ? 'active' : ''}`}
                             >
@@ -57,18 +57,18 @@ const ClienteSidebar = ({ visible }) => {
                             </NavLink>
                         </li>
                     ))}
-                    
+
                     <li className="divider"></li>
-                    
+
                     <li>
                         <NavLink to="/" className="sidebar-link">
                             <span className="icon"><House size={18} /></span>
                             <span className="label">Ir a Sitio Web</span>
                         </NavLink>
                     </li>
-                    
+
                     <li>
-                        <button 
+                        <button
                             className="sidebar-link logout-btn"
                             onClick={cerrarSesion}
                         >

@@ -17,7 +17,7 @@ const Footer = () => {
                                     <span>YADRAN</span>
                                 </div>
                                 <p className="mt-3">
-                                    Ofrecemos una experiencia única de hospedaje, combinando lujo, confort y un servicio 
+                                    Ofrecemos una experiencia única de hospedaje, combinando lujo, confort y un servicio
                                     excepcional para hacer de su estadía un momento inolvidable.
                                 </p>
                                 <div className="footer-social">

@@ -9,30 +9,30 @@ const AdminHeader = ({ toggleSidebar, sidebarVisible }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const { usuario, cerrarSesion } = usarAutenticacion();
     const navigate = useNavigate();
-    
+
     const handleSearch = (e) => {
         e.preventDefault();
         // Implementar búsqueda global
         console.log('Búsqueda:', searchQuery);
     };
-    
+
     return (
         <Navbar bg="white" className="admin-header shadow-sm">
             <Container fluid>
                 <div className="d-flex align-items-center">
-                    <Button 
-                        variant="link" 
+                    <Button
+                        variant="link"
                         className="sidebar-toggle p-0 me-3"
                         onClick={toggleSidebar}
                     >
                         <List size={24} />
                     </Button>
-                    
+
                     <div className="page-title d-none d-md-block">
                         Dashboard
                     </div>
                 </div>
-                
+
                 <div className="d-flex align-items-center">
                     {showSearch ? (
                         <form onSubmit={handleSearch} className="search-form">
@@ -48,8 +48,8 @@ const AdminHeader = ({ toggleSidebar, sidebarVisible }) => {
                                 <Button type="submit" variant="primary">
                                     <Search size={18} />
                                 </Button>
-                                <Button 
-                                    variant="outline-secondary" 
+                                <Button
+                                    variant="outline-secondary"
                                     onClick={() => setShowSearch(false)}
                                 >
                                     <X size={18} />
@@ -57,21 +57,21 @@ const AdminHeader = ({ toggleSidebar, sidebarVisible }) => {
                             </div>
                         </form>
                     ) : (
-                        <Button 
-                            variant="light" 
+                        <Button
+                            variant="light"
                             className="btn-icon me-2"
                             onClick={() => setShowSearch(true)}
                         >
                             <Search size={18} />
                         </Button>
                     )}
-                    
+
                     <Dropdown align="end" className="me-2">
                         <Dropdown.Toggle variant="light" className="btn-icon position-relative">
                             <Bell size={18} />
                             <Badge bg="danger" className="notification-badge">2</Badge>
                         </Dropdown.Toggle>
-                        
+
                         <Dropdown.Menu className="dropdown-menu-end notification-dropdown">
                             <Dropdown.Header>Notificaciones (2)</Dropdown.Header>
                             <Dropdown.Item className="notification-item">
@@ -98,13 +98,13 @@ const AdminHeader = ({ toggleSidebar, sidebarVisible }) => {
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    
+
                     <Dropdown align="end" className="me-2">
                         <Dropdown.Toggle variant="light" className="btn-icon position-relative">
                             <Envelope size={18} />
                             <Badge bg="danger" className="notification-badge">1</Badge>
                         </Dropdown.Toggle>
-                        
+
                         <Dropdown.Menu className="dropdown-menu-end">
                             <Dropdown.Header>Mensajes (1)</Dropdown.Header>
                             <Dropdown.Item className="message-item">
@@ -122,7 +122,7 @@ const AdminHeader = ({ toggleSidebar, sidebarVisible }) => {
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    
+
                     <Dropdown align="end">
                         <Dropdown.Toggle className="user-dropdown" variant="light">
                             <div className="user-avatar-sm">
@@ -134,7 +134,7 @@ const AdminHeader = ({ toggleSidebar, sidebarVisible }) => {
                             </div>
                             <span className="ms-2 d-none d-md-inline">{usuario?.nombre || 'Admin'}</span>
                         </Dropdown.Toggle>
-                        
+
                         <Dropdown.Menu className="dropdown-menu-end">
                             <Dropdown.Item onClick={() => navigate('/admin/perfil')}>
                                 <Person size={16} className="me-2" />

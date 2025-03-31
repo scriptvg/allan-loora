@@ -6,7 +6,7 @@ import { Speedometer2, Building, Stars, People, CalendarCheck, Gear, BoxArrowLef
 const AdminSidebar = ({ visible }) => {
     const { usuario, cerrarSesion } = usarAutenticacion();
     const location = useLocation();
-    
+
     const menuItems = [
         { path: '/admin', icon: <Speedometer2 size={18} />, label: 'Dashboard', exact: true },
         { path: '/admin/habitaciones', icon: <Building size={18} />, label: 'Habitaciones' },
@@ -15,14 +15,14 @@ const AdminSidebar = ({ visible }) => {
         { path: '/admin/reservas', icon: <CalendarCheck size={18} />, label: 'Reservas' },
         { path: '/admin/configuracion', icon: <Gear size={18} />, label: 'Configuración' }
     ];
-    
+
     const isActive = (path, exact = false) => {
         if (exact) {
             return location.pathname === path;
         }
         return location.pathname.startsWith(path);
     };
-    
+
     return (
         <aside className={`admin-sidebar ${visible ? 'visible' : 'hidden'}`}>
             <div className="sidebar-header">
@@ -31,7 +31,7 @@ const AdminSidebar = ({ visible }) => {
                     <span className="logo-text">Yadran Admin</span>
                 </div>
             </div>
-            
+
             <div className="user-info">
                 <div className="user-avatar">
                     {usuario?.imgPerfil ? (
@@ -45,12 +45,12 @@ const AdminSidebar = ({ visible }) => {
                     <p className="user-role">Administrador</p>
                 </div>
             </div>
-            
+
             <nav className="sidebar-menu">
                 <ul>
                     {menuItems.map((item, index) => (
                         <li key={index}>
-                            <NavLink 
+                            <NavLink
                                 to={item.path}
                                 className={`sidebar-link ${isActive(item.path, item.exact) ? 'active' : ''}`}
                             >
@@ -59,18 +59,18 @@ const AdminSidebar = ({ visible }) => {
                             </NavLink>
                         </li>
                     ))}
-                    
+
                     <li className="divider"></li>
-                    
+
                     <li>
                         <NavLink to="/" className="sidebar-link">
                             <span className="icon"><House size={18} /></span>
                             <span className="label">Ir a Sitio Web</span>
                         </NavLink>
                     </li>
-                    
+
                     <li>
-                        <button 
+                        <button
                             className="sidebar-link logout-btn"
                             onClick={cerrarSesion}
                         >

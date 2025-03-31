@@ -8,7 +8,7 @@ const HabitacionesFiltros = ({ filtros, onChange }) => {
         // Precio (rango)
         if (grupo === 'precio') {
             nuevosFiltros.precio = { ...nuevosFiltros.precio, ...valor };
-        } 
+        }
         // Tipos y capacidades (arrays)
         else if (grupo === 'tipo' || grupo === 'capacidad' || grupo === 'servicios') {
             if (nuevosFiltros[grupo].includes(valor)) {
@@ -17,7 +17,7 @@ const HabitacionesFiltros = ({ filtros, onChange }) => {
                 nuevosFiltros[grupo] = [...nuevosFiltros[grupo], valor];
             }
         }
-        
+
         onChange(nuevosFiltros);
     };
 
@@ -37,7 +37,7 @@ const HabitacionesFiltros = ({ filtros, onChange }) => {
         { valor: '4', etiqueta: '4 personas' },
         { valor: '5', etiqueta: '5+ personas' }
     ];
-    
+
     // Opciones de servicios
     const serviciosOpciones = [
         { valor: 'wifi', etiqueta: 'WiFi' },
@@ -66,7 +66,7 @@ const HabitacionesFiltros = ({ filtros, onChange }) => {
                         ))}
                     </div>
                 </Col>
-                
+
                 <Col md={3}>
                     <h6 className="filtro-titulo">Precio por noche</h6>
                     <Form.Group className="mb-3">
@@ -90,7 +90,7 @@ const HabitacionesFiltros = ({ filtros, onChange }) => {
                         />
                     </Form.Group>
                 </Col>
-                
+
                 <Col md={3}>
                     <h6 className="filtro-titulo">Capacidad</h6>
                     <div className="filtro-opciones">
@@ -106,7 +106,7 @@ const HabitacionesFiltros = ({ filtros, onChange }) => {
                         ))}
                     </div>
                 </Col>
-                
+
                 <Col md={3}>
                     <h6 className="filtro-titulo">Servicios</h6>
                     <div className="filtro-opciones">

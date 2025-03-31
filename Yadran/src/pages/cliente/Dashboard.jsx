@@ -15,14 +15,14 @@ const Dashboard = () => {
         reservasActivas: 0,
         ultimaActividad: null
     });
-    
+
     useEffect(() => {
         const cargarDatos = async () => {
             try {
                 setCargando(true);
                 // Simulación de carga de datos desde la API
                 // En una implementación real, estos datos vendrían del backend
-                
+
                 setTimeout(() => {
                     setProximasReservas([
                         {
@@ -42,13 +42,13 @@ const Dashboard = () => {
                             precio: 95000
                         }
                     ]);
-                    
+
                     setEstadisticas({
                         totalReservas: 5,
                         reservasActivas: 2,
                         ultimaActividad: new Date()
                     });
-                    
+
                     setCargando(false);
                 }, 1000);
             } catch (error) {
@@ -56,10 +56,10 @@ const Dashboard = () => {
                 setCargando(false);
             }
         };
-        
+
         cargarDatos();
     }, []);
-    
+
     return (
         <div className="cliente-dashboard-page">
             <div className="welcome-header mb-4">
@@ -68,7 +68,7 @@ const Dashboard = () => {
                     Panel de control del cliente - Gestione sus reservas y servicios
                 </p>
             </div>
-            
+
             <Row className="stats-row mb-4">
                 <Col md={4} className="mb-3">
                     <Card className="h-100 border-0 shadow-sm stats-card">
@@ -83,7 +83,7 @@ const Dashboard = () => {
                         </Card.Body>
                     </Card>
                 </Col>
-                
+
                 <Col md={4} className="mb-3">
                     <Card className="h-100 border-0 shadow-sm stats-card">
                         <Card.Body className="d-flex align-items-center">
@@ -97,7 +97,7 @@ const Dashboard = () => {
                         </Card.Body>
                     </Card>
                 </Col>
-                
+
                 <Col md={4} className="mb-3">
                     <Card className="h-100 border-0 shadow-sm stats-card">
                         <Card.Body className="d-flex align-items-center">
@@ -107,8 +107,8 @@ const Dashboard = () => {
                             <div className="ms-3">
                                 <h6 className="stats-label mb-1">Última Actividad</h6>
                                 <h3 className="stats-value mb-0">
-                                    {estadisticas.ultimaActividad ? 
-                                        formatearFecha(estadisticas.ultimaActividad, 'short') : 
+                                    {estadisticas.ultimaActividad ?
+                                        formatearFecha(estadisticas.ultimaActividad, 'short') :
                                         'Sin actividad'}
                                 </h3>
                             </div>
@@ -116,7 +116,7 @@ const Dashboard = () => {
                     </Card>
                 </Col>
             </Row>
-            
+
             <Row className="mb-4">
                 <Col lg={8} className="mb-4 mb-lg-0">
                     <Card className="border-0 shadow-sm">
@@ -168,10 +168,10 @@ const Dashboard = () => {
                                         <i className="bi bi-calendar-x fs-1 text-muted"></i>
                                         <p className="mt-2 mb-0">No tiene reservas próximas</p>
                                     </div>
-                                    <Button 
-                                        as={Link} 
-                                        to="/cliente/reservas/nueva" 
-                                        variant="primary" 
+                                    <Button
+                                        as={Link}
+                                        to="/cliente/reservas/nueva"
+                                        variant="primary"
                                         className="mt-3"
                                     >
                                         Hacer una Reserva
@@ -181,7 +181,7 @@ const Dashboard = () => {
                         </Card.Body>
                     </Card>
                 </Col>
-                
+
                 <Col lg={4}>
                     <Card className="border-0 shadow-sm mb-4">
                         <Card.Header className="bg-white py-3">
@@ -190,10 +190,10 @@ const Dashboard = () => {
                         <Card.Body className="text-center">
                             <div className="user-avatar-large mx-auto mb-3">
                                 {usuario?.imgPerfil ? (
-                                    <img 
-                                        src={usuario.imgPerfil} 
-                                        alt={usuario.nombre} 
-                                        className="rounded-circle img-fluid" 
+                                    <img
+                                        src={usuario.imgPerfil}
+                                        alt={usuario.nombre}
+                                        className="rounded-circle img-fluid"
                                     />
                                 ) : (
                                     <div className="avatar-placeholder-large rounded-circle d-flex align-items-center justify-content-center bg-primary text-white">
@@ -203,45 +203,45 @@ const Dashboard = () => {
                             </div>
                             <h5 className="mb-1">{usuario?.nombre || 'Usuario'}</h5>
                             <p className="text-muted mb-3">{usuario?.email || 'email@ejemplo.com'}</p>
-                            <Button 
-                                as={Link} 
-                                to="/cliente/perfil" 
-                                variant="outline-primary" 
+                            <Button
+                                as={Link}
+                                to="/cliente/perfil"
+                                variant="outline-primary"
                                 className="w-100"
                             >
                                 Editar Perfil
                             </Button>
                         </Card.Body>
                     </Card>
-                    
+
                     <Card className="border-0 shadow-sm">
                         <Card.Header className="bg-white py-3">
                             <h5 className="mb-0">Acciones Rápidas</h5>
                         </Card.Header>
                         <Card.Body>
                             <div className="quick-actions">
-                                <Button 
-                                    as={Link} 
-                                    to="/cliente/reservas/nueva" 
-                                    variant="success" 
+                                <Button
+                                    as={Link}
+                                    to="/cliente/reservas/nueva"
+                                    variant="success"
                                     className="w-100 mb-2"
                                 >
                                     <i className="bi bi-plus-circle me-2"></i>
                                     Nueva Reserva
                                 </Button>
-                                <Button 
-                                    as={Link} 
-                                    to="/cliente/servicios" 
-                                    variant="outline-primary" 
+                                <Button
+                                    as={Link}
+                                    to="/cliente/servicios"
+                                    variant="outline-primary"
                                     className="w-100 mb-2"
                                 >
                                     <i className="bi bi-stars me-2"></i>
                                     Explorar Servicios
                                 </Button>
-                                <Button 
-                                    as={Link} 
-                                    to="/contacto" 
-                                    variant="outline-secondary" 
+                                <Button
+                                    as={Link}
+                                    to="/contacto"
+                                    variant="outline-secondary"
                                     className="w-100"
                                 >
                                     <i className="bi bi-headset me-2"></i>

@@ -9,23 +9,23 @@ import '../../assets/styles/admin/dashboard.css';
 const AdminLayout = () => {
     const [sidebarVisible, setSidebarVisible] = useState(true);
     const { esMovil, esTablet } = useWindowSize();
-    
+
     const toggleSidebar = () => {
         setSidebarVisible(!sidebarVisible);
     };
-    
+
     const esSidebarExpandido = sidebarVisible && !esMovil;
-    
+
     return (
         <div className={`admin-dashboard-container ${esSidebarExpandido ? 'sidebar-expanded' : 'sidebar-collapsed'}`}>
             <AdminSidebar visible={sidebarVisible} />
-            
+
             <div className="admin-main-content">
-                <AdminHeader 
-                    toggleSidebar={toggleSidebar} 
+                <AdminHeader
+                    toggleSidebar={toggleSidebar}
                     sidebarVisible={sidebarVisible}
                 />
-                
+
                 <Container fluid className="py-4 px-4 dashboard-content">
                     <Outlet />
                 </Container>

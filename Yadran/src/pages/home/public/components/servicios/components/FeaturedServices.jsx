@@ -24,21 +24,21 @@ const FeaturedServices = ({ services = [] }) => {
                     <Col lg={8} className="text-center">
                         <h2 className="section-title animate-on-scroll fade-in-up">Servicios Destacados</h2>
                         <p className="section-subtitle animate-on-scroll fade-in-up delay-1">
-                            Ofrecemos una variedad de servicios premium diseñados para hacer su estadía 
+                            Ofrecemos una variedad de servicios premium diseñados para hacer su estadía
                             más cómoda y placentera
                         </p>
                     </Col>
                 </Row>
-                
+
                 <Row>
                     {services.length > 0 ? (
                         services.map((service, index) => (
                             <Col key={service.id} md={6} lg={4} className="mb-4">
-                                <Card className={`service-card border-0 shadow-sm animate-on-scroll fade-in-up delay-${index+1}`}>
+                                <Card className={`service-card border-0 shadow-sm animate-on-scroll fade-in-up delay-${index + 1}`}>
                                     <div className="service-image-container">
-                                        <Card.Img 
-                                            variant="top" 
-                                            src={service.imgSrc || `https://source.unsplash.com/random/300x200/?${service.title.toLowerCase()}`} 
+                                        <Card.Img
+                                            variant="top"
+                                            src={service.imgSrc || `https://source.unsplash.com/random/300x200/?${service.title.toLowerCase()}`}
                                             alt={service.title}
                                             className="service-image"
                                         />
@@ -49,13 +49,13 @@ const FeaturedServices = ({ services = [] }) => {
                                     <Card.Body className="p-4">
                                         <Card.Title className="service-title">{service.title}</Card.Title>
                                         <Card.Text className="service-description">{service.description}</Card.Text>
-                                        
+
                                         <div className="service-details">
                                             <div className="service-schedule mb-3">
                                                 <i className="bi bi-clock me-2"></i>
                                                 <span>{service.horario}</span>
                                             </div>
-                                            
+
                                             {service.caracteristicas && service.caracteristicas.length > 0 && (
                                                 <div className="service-features">
                                                     <h6 className="features-title">Características:</h6>
@@ -67,9 +67,9 @@ const FeaturedServices = ({ services = [] }) => {
                                                 </div>
                                             )}
                                         </div>
-                                        
+
                                         <div className="text-center mt-4">
-                                            <Button 
+                                            <Button
                                                 as={Link}
                                                 to={`/contacto?service=${service.title}`}
                                                 variant={getVariantClass(service.variante)}

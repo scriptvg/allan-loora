@@ -10,25 +10,25 @@ const RecuperarContrasenia = () => {
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         // Validar email
         if (!email.trim() || !/\S+@\S+\.\S+/.test(email)) {
             setError('Por favor ingrese un email válido');
             return;
         }
-        
+
         setLoading(true);
         setError('');
-        
+
         try {
             await usuariosApi.recuperarContrasenia(email);
             setSubmitted(true);
         } catch (err) {
             console.error('Error al solicitar recuperación de contraseña:', err);
-            
+
             // No revelar si el email existe o no por seguridad
             // Fingir éxito incluso si el email no existe en la base de datos
             setSubmitted(true);
@@ -36,7 +36,7 @@ const RecuperarContrasenia = () => {
             setLoading(false);
         }
     };
-    
+
     return (
         <>
             <Header />
@@ -54,9 +54,9 @@ const RecuperarContrasenia = () => {
                                         }
                                     </p>
                                 </div>
-                                
+
                                 {error && <Alert variant="danger">{error}</Alert>}
-                                
+
                                 {!submitted ? (
                                     <Form onSubmit={handleSubmit}>
                                         <Form.Group className="mb-4">
@@ -70,7 +70,7 @@ const RecuperarContrasenia = () => {
                                                 required
                                             />
                                         </Form.Group>
-                                        
+
                                         <div className="d-grid mb-4">
                                             <Button
                                                 variant="primary"
@@ -86,7 +86,7 @@ const RecuperarContrasenia = () => {
                                                 ) : 'Enviar Instrucciones'}
                                             </Button>
                                         </div>
-                                        
+
                                         <div className="text-center">
                                             <Link to="/iniciar-sesion" className="text-decoration-none">
                                                 <i className="bi bi-arrow-left me-1"></i> Volver a Iniciar Sesión
@@ -98,11 +98,11 @@ const RecuperarContrasenia = () => {
                                         <div className="mb-4">
                                             <i className="bi bi-envelope-check text-success" style={{ fontSize: '3rem' }}></i>
                                         </div>
-                                        
+
                                         <Alert variant="success">
                                             Si su email existe en nuestra base de datos, recibirá un correo con instrucciones para restablecer su contraseña.
                                         </Alert>
-                                        
+
                                         <div className="mt-4">
                                             <Link to="/iniciar-sesion" className="btn btn-outline-primary">
                                                 Volver a Iniciar Sesión

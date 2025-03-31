@@ -16,17 +16,17 @@ const Registro = () => {
     });
     const [errors, setErrors] = useState({});
     const [submitting, setSubmitting] = useState(false);
-    
+
     const { registrarUsuario } = usarAutenticacion();
     const navigate = useNavigate();
-    
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevState => ({
             ...prevState,
             [name]: value
         }));
-        
+
         // Limpiar errores al cambiar valores
         if (errors[name]) {
             setErrors(prevErrors => ({
@@ -35,17 +35,17 @@ const Registro = () => {
             }));
         }
     };
-    
+
     const validateForm = () => {
         let formErrors = {};
         let isValid = true;
-        
+
         // Validar nombre
         if (!formData.nombre.trim()) {
             formErrors.nombre = 'El nombre es obligatorio';
             isValid = false;
         }
-        
+
         // Validar email
         if (!formData.email.trim()) {
             formErrors.email = 'El email es obligatorio';
@@ -54,7 +54,7 @@ const Registro = () => {
             formErrors.email = 'Email inválido';
             isValid = false;
         }
-        
+
         // Validar contraseña
         if (!formData.contrasenia) {
             formErrors.contrasenia = 'La contraseña es obligatoria';
@@ -66,24 +66,24 @@ const Registro = () => {
                 isValid = false;
             }
         }
-        
+
         // Validar confirmación de contraseña
         if (formData.contrasenia !== formData.confirmarContrasenia) {
             formErrors.confirmarContrasenia = 'Las contraseñas no coinciden';
             isValid = false;
         }
-        
+
         setErrors(formErrors);
         return isValid;
     };
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         if (!validateForm()) {
             return;
         }
-        
+
         // Construir objeto de datos para el registro
         const datosUsuario = {
             nombre: formData.nombre,
@@ -92,21 +92,21 @@ const Registro = () => {
             contrasenia: formData.contrasenia,
             rol: 'cliente' // Por defecto, registramos como cliente
         };
-        
+
         try {
             setSubmitting(true);
-            
+
             await registrarUsuario(datosUsuario);
-            
+
             // Redireccionar al login después de registro exitoso
-            navigate('/iniciar-sesion', { 
-                state: { 
-                    message: 'Registro exitoso. Por favor inicie sesión con sus credenciales.' 
+            navigate('/iniciar-sesion', {
+                state: {
+                    message: 'Registro exitoso. Por favor inicie sesión con sus credenciales.'
                 }
             });
         } catch (error) {
             console.error('Error en el registro:', error);
-            
+
             if (error.response?.data?.errors) {
                 const backendErrors = {};
                 error.response.data.errors.forEach(err => {
@@ -114,19 +114,19 @@ const Registro = () => {
                 });
                 setErrors(backendErrors);
             } else if (error.response?.data?.message) {
-                setErrors({ 
-                    general: error.response.data.message 
+                setErrors({
+                    general: error.response.data.message
                 });
             } else {
-                setErrors({ 
-                    general: 'Error al registrar usuario. Por favor intente de nuevo.' 
+                setErrors({
+                    general: 'Error al registrar usuario. Por favor intente de nuevo.'
                 });
             }
         } finally {
             setSubmitting(false);
         }
     };
-    
+
     return (
         <>
             <Header />
@@ -139,11 +139,11 @@ const Registro = () => {
                                     <h2 className="h3 mb-3">Crear una cuenta</h2>
                                     <p className="text-muted">Complete el formulario para registrarse</p>
                                 </div>
-                                
+
                                 {errors.general && (
                                     <Alert variant="danger">{errors.general}</Alert>
                                 )}
-                                
+
                                 <Form onSubmit={handleSubmit}>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Nombre completo <span className="text-danger">*</span></Form.Label>
@@ -160,7 +160,7 @@ const Registro = () => {
                                             {errors.nombre}
                                         </Form.Control.Feedback>
                                     </Form.Group>
-                                    
+
                                     <Form.Group className="mb-3">
                                         <Form.Label>Email <span className="text-danger">*</span></Form.Label>
                                         <Form.Control
@@ -176,7 +176,7 @@ const Registro = () => {
                                             {errors.email}
                                         </Form.Control.Feedback>
                                     </Form.Group>
-                                    
+
                                     <Form.Group className="mb-3">
                                         <Form.Label>Teléfono (opcional)</Form.Label>
                                         <Form.Control
@@ -192,7 +192,7 @@ const Registro = () => {
                                             {errors.telefono}
                                         </Form.Control.Feedback>
                                     </Form.Group>
-                                    
+
                                     <Form.Group className="mb-3">
                                         <Form.Label>Contraseña <span className="text-danger">*</span></Form.Label>
                                         <Form.Control
@@ -211,7 +211,7 @@ const Registro = () => {
                                             Debe tener al menos 8 caracteres, incluir mayúsculas, minúsculas, números y caracteres especiales.
                                         </Form.Text>
                                     </Form.Group>
-                                    
+
                                     <Form.Group className="mb-4">
                                         <Form.Label>Confirmar contraseña <span className="text-danger">*</span></Form.Label>
                                         <Form.Control
@@ -227,7 +227,7 @@ const Registro = () => {
                                             {errors.confirmarContrasenia}
                                         </Form.Control.Feedback>
                                     </Form.Group>
-                                    
+
                                     <div className="d-grid">
                                         <Button
                                             variant="primary"
@@ -244,7 +244,7 @@ const Registro = () => {
                                         </Button>
                                     </div>
                                 </Form>
-                                
+
                                 <div className="mt-4 text-center">
                                     <p className="mb-0">
                                         ¿Ya tiene una cuenta? <Link to="/iniciar-sesion" className="text-primary text-decoration-none">Iniciar Sesión</Link>

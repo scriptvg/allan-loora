@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Card, Button, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { 
-    BarChart, 
-    Building, 
-    Users, 
-    Calendar, 
-    CreditCard, 
-    TrendingUp, 
+import {
+    BarChart,
+    Building,
+    Users,
+    Calendar,
+    CreditCard,
+    TrendingUp,
     CheckCircle,
     XCircle,
     Clock
@@ -28,12 +28,12 @@ const Dashboard = () => {
     });
     const [ultimasReservas, setUltimasReservas] = useState([]);
     const [cargando, setCargando] = useState(true);
-    
+
     useEffect(() => {
         const cargarDatosDashboard = async () => {
             try {
                 setCargando(true);
-                
+
                 // En una implementación real, estos datos vendrían del backend
                 // Por ahora, simulamos una carga de datos
                 setTimeout(() => {
@@ -45,7 +45,7 @@ const Dashboard = () => {
                         ingresosMensuales: 5600000,
                         ocupacionPromedio: 72
                     });
-                    
+
                     setUltimasReservas([
                         {
                             id: 'RES-001',
@@ -93,19 +93,19 @@ const Dashboard = () => {
                             total: 350000
                         }
                     ]);
-                    
+
                     setCargando(false);
                 }, 1000);
-                
+
             } catch (error) {
                 console.error('Error al cargar datos del dashboard:', error);
                 setCargando(false);
             }
         };
-        
+
         cargarDatosDashboard();
     }, []);
-    
+
     return (
         <div className="admin-dashboard">
             <div className="page-header mb-4">
@@ -114,7 +114,7 @@ const Dashboard = () => {
                     Bienvenido, {usuario?.nombre || 'Administrador'}. Aquí tiene un resumen de la actividad del hotel.
                 </p>
             </div>
-            
+
             <Row className="stats-cards mb-4">
                 <Col md={6} lg={3} className="mb-4">
                     <Card className="stats-card border-0 shadow-sm h-100">
@@ -136,7 +136,7 @@ const Dashboard = () => {
                         </Card.Body>
                     </Card>
                 </Col>
-                
+
                 <Col md={6} lg={3} className="mb-4">
                     <Card className="stats-card border-0 shadow-sm h-100">
                         <Card.Body className="d-flex flex-column">
@@ -157,7 +157,7 @@ const Dashboard = () => {
                         </Card.Body>
                     </Card>
                 </Col>
-                
+
                 <Col md={6} lg={3} className="mb-4">
                     <Card className="stats-card border-0 shadow-sm h-100">
                         <Card.Body className="d-flex flex-column">
@@ -178,7 +178,7 @@ const Dashboard = () => {
                         </Card.Body>
                     </Card>
                 </Col>
-                
+
                 <Col md={6} lg={3} className="mb-4">
                     <Card className="stats-card border-0 shadow-sm h-100">
                         <Card.Body className="d-flex flex-column">
@@ -201,16 +201,16 @@ const Dashboard = () => {
                     </Card>
                 </Col>
             </Row>
-            
+
             <Row className="mb-4">
                 <Col lg={8} className="mb-4">
                     <Card className="border-0 shadow-sm">
                         <Card.Header className="bg-white py-3 d-flex justify-content-between align-items-center">
                             <h5 className="mb-0">Últimas Reservas</h5>
-                            <Button 
-                                as={Link} 
-                                to="/admin/reservas" 
-                                variant="outline-primary" 
+                            <Button
+                                as={Link}
+                                to="/admin/reservas"
+                                variant="outline-primary"
                                 size="sm"
                             >
                                 Ver Todas
@@ -241,7 +241,7 @@ const Dashboard = () => {
                                             {ultimasReservas.map((reserva) => (
                                                 <tr key={reserva.id}>
                                                     <td>
-                                                        <Link 
+                                                        <Link
                                                             to={`/admin/reservas/editar/${reserva.id}`}
                                                             className="fw-medium text-decoration-none"
                                                         >
@@ -273,7 +273,7 @@ const Dashboard = () => {
                         </Card.Body>
                     </Card>
                 </Col>
-                
+
                 <Col lg={4}>
                     <Card className="border-0 shadow-sm mb-4">
                         <Card.Header className="bg-white py-3">
@@ -313,40 +313,40 @@ const Dashboard = () => {
                             </p>
                         </Card.Body>
                     </Card>
-                    
+
                     <Card className="border-0 shadow-sm">
                         <Card.Header className="bg-white py-3">
                             <h5 className="mb-0">Acciones Rápidas</h5>
                         </Card.Header>
                         <Card.Body>
                             <div className="d-grid gap-2">
-                                <Button 
-                                    as={Link} 
-                                    to="/admin/reservas/crear" 
+                                <Button
+                                    as={Link}
+                                    to="/admin/reservas/crear"
                                     variant="primary"
                                 >
                                     <i className="bi bi-plus-circle me-2"></i>
                                     Nueva Reserva
                                 </Button>
-                                <Button 
-                                    as={Link} 
-                                    to="/admin/habitaciones" 
+                                <Button
+                                    as={Link}
+                                    to="/admin/habitaciones"
                                     variant="outline-primary"
                                 >
                                     <i className="bi bi-building me-2"></i>
                                     Gestionar Habitaciones
                                 </Button>
-                                <Button 
-                                    as={Link} 
-                                    to="/admin/clientes" 
+                                <Button
+                                    as={Link}
+                                    to="/admin/clientes"
                                     variant="outline-primary"
                                 >
                                     <i className="bi bi-people me-2"></i>
                                     Gestionar Clientes
                                 </Button>
-                                <Button 
-                                    as={Link} 
-                                    to="/admin/servicios" 
+                                <Button
+                                    as={Link}
+                                    to="/admin/servicios"
                                     variant="outline-primary"
                                 >
                                     <i className="bi bi-stars me-2"></i>

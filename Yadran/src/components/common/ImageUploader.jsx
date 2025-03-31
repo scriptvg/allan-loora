@@ -49,17 +49,17 @@ const ImageUploader = ({ imagenes = [], onChange, multiple = false }) => {
 
     const handleFiles = (files) => {
         const fileList = Array.from(files);
-        
+
         // Filtrar solo archivos de imagen
         const imageFiles = fileList.filter(file => file.type.startsWith('image/'));
-        
+
         if (imageFiles.length === 0) return;
 
         const nuevasImagenes = [...imagenes];
-        
+
         imageFiles.forEach(file => {
             const reader = new FileReader();
-            
+
             reader.onload = (e) => {
                 // Si no es múltiple, reemplazamos las imágenes
                 if (!multiple) {
@@ -70,7 +70,7 @@ const ImageUploader = ({ imagenes = [], onChange, multiple = false }) => {
                     onChange([...nuevasImagenes]);
                 }
             };
-            
+
             reader.readAsDataURL(file);
         });
     };

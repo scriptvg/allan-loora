@@ -43,7 +43,7 @@
     transform: translateX(-50%);
 }
 
-.historia-content .lead, 
+.historia-content .lead,
 .mision-vision-section .lead,
 .valores-section .lead,
 .equipo-section .lead {
@@ -67,7 +67,7 @@
     transform: scale(1.03);
 }
 
-.mission-icon, 
+.mission-icon,
 .vision-icon,
 .value-icon {
     font-size: 2.5rem;
@@ -123,15 +123,15 @@
     .acerca-hero {
         padding: 80px 0;
     }
-    
+
     .acerca-title {
         font-size: 2.5rem;
     }
-    
+
     .historia-content {
         text-align: center;
     }
-    
+
     .section-title::after {
         left: 50%;
         transform: translateX(-50%);

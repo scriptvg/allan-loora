@@ -11,7 +11,7 @@ const Home = () => {
     return (
         <div className="home-page">
             <Hero />
-            
+
             <section className="welcome-section py-5">
                 <Container>
                     <Row className="align-items-center">
@@ -20,7 +20,7 @@ const Home = () => {
                                 <h2 className="section-title">Bienvenido a Hotel Yadran</h2>
                                 <p className="lead">Su refugio de tranquilidad y lujo en el corazón de la ciudad</p>
                                 <p className="text-muted">
-                                    Disfrute de una experiencia única en nuestro hotel boutique, donde cada detalle ha sido 
+                                    Disfrute de una experiencia única en nuestro hotel boutique, donde cada detalle ha sido
                                     cuidadosamente diseñado para brindarle confort y elegancia. Con nuestra ubicación privilegiada,
                                     tendrá acceso inmediato a los principales atractivos turísticos y comerciales.
                                 </p>
@@ -31,9 +31,9 @@ const Home = () => {
                         </Col>
                         <Col lg={6}>
                             <div className="welcome-image-container">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=2070" 
-                                    alt="Hotel Yadran" 
+                                <img
+                                    src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=2070"
+                                    alt="Hotel Yadran"
                                     className="welcome-image img-fluid rounded shadow-lg"
                                 />
                                 <div className="image-badge">
@@ -45,11 +45,11 @@ const Home = () => {
                     </Row>
                 </Container>
             </section>
-            
+
             <FeaturedRooms />
-            
+
             <Services />
-            
+
             <section className="cta-section py-5 my-5">
                 <Container>
                     <Row className="justify-content-center">
@@ -75,7 +75,7 @@ const Home = () => {
                     </Row>
                 </Container>
             </section>
-            
+
             <Testimonials />
         </div>
     );

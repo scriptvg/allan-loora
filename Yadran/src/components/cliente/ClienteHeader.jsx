@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Container, Dropdown, Badge, Button } from 'react-bootstrap';
-import { List, Bell, BoxArrowLeft, Gear, Person } from 'react-bootstrap-icons';
+import { List, Bell, BoxArrowLeft, Gear, Person, Plus, CalendarCheck } from 'react-bootstrap-icons';
 import { usarAutenticacion } from '../../config/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
