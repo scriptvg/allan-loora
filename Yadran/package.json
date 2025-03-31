@@ -1,0 +1,45 @@
+{
+  "name": "yadran",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "json-server --watch db.json --port 3001",
+    "server:auth": "json-server --watch db.json --port 3001 -m ./node_modules/json-server-auth"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "chart.js": "^4.4.8",
+    "emailjs": "^4.0.3",
+    "emailjs-com": "^3.2.0",
+    "formik": "^2.4.6",
+    "jquery": "^3.7.1",
+    "json-server": "^1.0.0-beta.3",
+    "json-server-auth": "^2.1.0",
+    "jwt-decode": "^4.0.0",
+    "leaflet": "^1.9.4",
+    "react-leaflet": "^4.2.1",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.9",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^5.5.0",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.4.0",
+    "redux": "^5.0.1",
+    "scss": "^0.2.4",
+    "sweetalert2": "^11.7.3",
+    "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.2.0"
+  }
+}

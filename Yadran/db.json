@@ -1,0 +1,58 @@
+{
+    "usuarios": [
+        {
+            "id": 1,
+            "email": "admin@gmail.com",
+            "password": "Admin123",
+            "role": "admin",
+            "token": "active",
+            "datos": {
+                "nombre": "Allan",
+                "apellido": "Gonzalez",
+                "telefono": "123456789",
+                "direccion": "Calle Falsa 123"
+            },
+            "imgsUsuario": {
+                "imgPerfil": "",
+                "img": ""
+            }
+        }
+    ],
+    "habitaciones": [
+        {
+            "id": "HAB-M8PLE56H",
+            "nombre": "Steven",
+            "tipo": "indi",
+            "precio": 123,
+            "descripcion": "dawd awd awd ad awd adwdacdcawdcd dgc",
+            "capacidad": 4,
+            "estado": "Disponible",
+            "servicios": [
+              "bano_privado",
+              "vista_al_mar",
+              "tv",
+              "wifi",
+              "aire_acondicionado"
+            ],
+            "imgsHabitacion": {
+                "imgHabitacion": [
+                    "./assets/img/image.png"
+                ],
+                "img": [
+                    "https://cdn.pixabay.com/photo/2016/11/29/09/08/room-1869640_1280.jpg",
+                    "https://cdn.pixabay.com/photo/2016/11/29/09/08/room-1869640_1280.jpg",
+                    "https://cdn.pixabay.com/photo/2016/11/29/09/08/room-1869640_1280.jpg"
+                ]
+            }
+          }
+    ],
+    "servicios": [
+
+    ],
+    "clientes": [
+
+    ],
+    "reservas": [
+        
+    ]
+}

@@ -1,0 +1,139 @@
+/* Estilos para la página Acerca */
+
+.acerca-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2070');
+    background-size: cover;
+    background-position: center;
+    padding: 120px 0;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.acerca-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.acerca-subtitle {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-title {
+    position: relative;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #0d6efd;
+}
+
+.text-center .section-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.historia-content .lead, 
+.mision-vision-section .lead,
+.valores-section .lead,
+.equipo-section .lead {
+    font-size: 1.25rem;
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+.historia-image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.historia-image {
+    transition: transform 0.5s ease;
+}
+
+.historia-image-container:hover .historia-image {
+    transform: scale(1.03);
+}
+
+.mission-icon, 
+.vision-icon,
+.value-icon {
+    font-size: 2.5rem;
+    color: #0d6efd;
+    margin-bottom: 1.25rem;
+}
+
+.value-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.value-icon {
+    background-color: rgba(13, 110, 253, 0.1);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+}
+
+.value-icon i {
+    font-size: 1.75rem;
+    color: #0d6efd;
+}
+
+.team-card {
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+}
+
+.team-card img {
+    transition: transform 0.5s ease;
+    height: 300px;
+    object-fit: cover;
+}
+
+.team-card:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .acerca-hero {
+        padding: 80px 0;
+    }
+    
+    .acerca-title {
+        font-size: 2.5rem;
+    }
+    
+    .historia-content {
+        text-align: center;
+    }
+    
+    .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

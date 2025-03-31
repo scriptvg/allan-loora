@@ -1,0 +1,179 @@
+/* Estilos para la página de detalle de habitación */
+
+/* Contenedor principal */
+.detalle-habitacion-page {
+    padding-bottom: 3rem;
+}
+
+/* Migas de pan */
+.breadcrumb-container {
+    margin-bottom: 2rem;
+}
+
+.breadcrumb-item a {
+    color: #6c757d;
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    color: #0d6efd;
+}
+
+/* Galería de imágenes */
+.galeria-habitacion {
+    margin-bottom: 2rem;
+}
+
+.imagen-principal img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 0.375rem;
+}
+
+.imagenes-miniaturas .miniatura {
+    cursor: pointer;
+    border-radius: 0.375rem;
+    overflow: hidden;
+    height: 80px;
+    border: 3px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.imagenes-miniaturas .miniatura.active {
+    border-color: #0d6efd;
+}
+
+.imagenes-miniaturas .miniatura img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Información de precio */
+.precio-container {
+    text-align: right;
+}
+
+.precio-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+}
+
+.precio-valor {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0d6efd;
+}
+
+/* Características básicas */
+.caracteristicas-basicas {
+    margin-top: 2rem;
+}
+
+.caracteristicas-basicas .caracteristica-icono {
+    font-size: 2rem;
+    color: #0d6efd;
+    margin-bottom: 1rem;
+}
+
+/* Servicios y amenidades */
+.servicios-habitacion {
+    margin-top: 2rem;
+}
+
+.servicio-item {
+    margin-bottom: 1rem;
+}
+
+.servicio-icono {
+    width: 35px;
+    height: 35px;
+    background-color: rgba(13, 110, 253, 0.1);
+    color: #0d6efd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.servicio-nombre {
+    text-transform: capitalize;
+}
+
+/* Tarjeta de reserva */
+.reserva-card {
+    z-index: 100;
+    top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.precio-resumen {
+    margin-bottom: 1.5rem;
+}
+
+.precio-valor-grande {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0d6efd;
+}
+
+.precio-periodo {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.resumen-reserva {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.9rem;
+}
+
+.reservar-btn {
+    font-weight: 600;
+}
+
+/* Spinner de carga */
+.spinner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+}
+
+/* Error container */
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .reserva-card {
+        position: static !important;
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .imagen-principal img {
+        height: 300px;
+    }
+    
+    .precio-container {
+        text-align: left;
+        margin-top: 1rem;
+    }
+    
+    .precio-valor-grande {
+        font-size: 2rem;
+    }
+}

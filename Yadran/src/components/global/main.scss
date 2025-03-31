@@ -1,0 +1,14 @@
+// Main SCSS file that imports all other styles
+
+// Variables and configuration
+@import 'variables';
+
+// Mixins
+@import 'mixins/alerts';
+@import 'mixins/sweetalerts';
+
+// Component styles
+@import 'components/alerts';
+@import 'components/sweetalerts';
+
+// Other imports and styles

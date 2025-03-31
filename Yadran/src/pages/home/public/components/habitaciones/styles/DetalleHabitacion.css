@@ -1,0 +1,524 @@
+@import '../../../../../../assets/styles/variables.css';
+
+/* Variables específicas - adaptadas al estilo del Header existente */
+:root {
+    --detalle-transition: var(--transition-default);
+    --detalle-border-radius: var(--border-radius-default);
+    --detalle-shadow-sm: var(--box-shadow-default);
+    --detalle-shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --detalle-shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Animaciones para elementos de habitación */
+@keyframes detalleHabFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes detalleHabSlideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Contenedor principal - ajuste para respetar el navbar fijo */
+.detalle-habitacion-page {
+    animation: detalleHabFadeIn 0.6s var(--detalle-transition);
+    /* Importante: añadir espacio para el navbar fijo */
+    padding-top: 90px;
+    /* Altura del navbar + espacio extra */
+    padding-bottom: 3rem;
+}
+
+/* Ajuste responsivo para el padding-top */
+@media (max-width: 991.98px) {
+    .detalle-habitacion-page {
+        padding-top: 76px;
+        /* Navbar más pequeño en móvil */
+    }
+}
+
+/* Breadcrumb mejorado */
+.detalle-habitacion-page .breadcrumb-container {
+    border-bottom: 1px solid var(--color-gray-200);
+    padding: var(--spacing-3, 0.75rem) 0;
+    background-color: var(--color-gray-100);
+    position: relative;
+    z-index: 5;
+}
+
+.detalle-habitacion-page .breadcrumb-item a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: var(--detalle-transition);
+    font-weight: var(--font-weight-medium);
+    position: relative;
+}
+
+.detalle-habitacion-page .breadcrumb-item a:hover {
+    color: var(--color-primary-dark);
+}
+
+.detalle-habitacion-page .breadcrumb-item.active {
+    color: var(--color-gray-700);
+}
+
+/* Cabecera y título */
+.detalle-habitacion-page h1 {
+    color: var(--color-gray-800);
+    margin-bottom: 1rem;
+    animation: detalleHabSlideUp 0.5s var(--detalle-transition);
+    font-weight: var(--font-weight-bold);
+}
+
+/* Contenedor de precio */
+.detalle-habitacion-page .precio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    animation: detalleHabFadeIn 0.8s var(--detalle-transition);
+    background-color: rgba(var(--bs-primary-rgb, 13, 110, 253), 0.05);
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--detalle-border-radius);
+    box-shadow: var(--detalle-shadow-sm);
+}
+
+.detalle-habitacion-page .precio-label {
+    font-size: 0.875rem;
+    color: var(--color-gray-700);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: var(--font-weight-medium);
+}
+
+.detalle-habitacion-page .precio-valor {
+    font-size: 2rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    line-height: 1;
+}
+
+/* Galería de imágenes */
+.detalle-habitacion-page .galeria-habitacion {
+    animation: detalleHabSlideUp 0.7s var(--detalle-transition);
+    margin-top: 1.5rem;
+}
+
+.detalle-habitacion-page .imagen-principal {
+    overflow: hidden;
+    border-radius: var(--detalle-border-radius);
+    box-shadow: var(--detalle-shadow-sm);
+    position: relative;
+}
+
+.detalle-habitacion-page .imagen-principal img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.detalle-habitacion-page .imagen-principal:hover img {
+    transform: scale(1.05);
+}
+
+.detalle-habitacion-page .imagenes-miniaturas {
+    margin-top: 1rem;
+}
+
+.detalle-habitacion-page .miniatura {
+    cursor: pointer;
+    border-radius: var(--detalle-border-radius);
+    overflow: hidden;
+    transition: var(--detalle-transition);
+    opacity: 0.8;
+    border: 3px solid transparent;
+    box-shadow: var(--detalle-shadow-sm);
+}
+
+.detalle-habitacion-page .miniatura:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+.detalle-habitacion-page .miniatura.active {
+    opacity: 1;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.2);
+}
+
+.detalle-habitacion-page .miniatura img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+}
+
+/* Secciones de contenido */
+.detalle-habitacion-page .descripcion-habitacion,
+.detalle-habitacion-page .servicios-habitacion,
+.detalle-habitacion-page .politicas-habitacion {
+    animation: detalleHabSlideUp 0.8s var(--detalle-transition);
+    background-color: white;
+    border-radius: var(--detalle-border-radius);
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: var(--detalle-shadow-sm);
+    border: 1px solid var(--color-gray-200);
+}
+
+.detalle-habitacion-page .descripcion-habitacion p {
+    color: var(--color-gray-700);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.detalle-habitacion-page h3 {
+    color: var(--color-primary-dark);
+    position: relative;
+    padding-bottom: 12px;
+    margin-bottom: 1.5rem;
+    font-weight: var(--font-weight-bold);
+}
+
+.detalle-habitacion-page h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+}
+
+/* Características básicas */
+.detalle-habitacion-page .caracteristicas-basicas .card {
+    transition: transform 0.3s var(--detalle-transition), box-shadow 0.3s var(--detalle-transition);
+    border-radius: var(--detalle-border-radius);
+    border: none;
+    overflow: hidden;
+}
+
+.detalle-habitacion-page .caracteristicas-basicas .card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--detalle-shadow-md) !important;
+}
+
+.detalle-habitacion-page .caracteristica-icono {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+    transition: transform 0.3s var(--detalle-transition);
+}
+
+.detalle-habitacion-page .caracteristicas-basicas .card:hover .caracteristica-icono {
+    transform: scale(1.15);
+}
+
+/* Servicios */
+.detalle-habitacion-page .servicio-item {
+    padding: 0.875rem 1.25rem;
+    background-color: var(--color-gray-100);
+    border-radius: var(--detalle-border-radius);
+    transition: var(--detalle-transition);
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.detalle-habitacion-page .servicio-item:hover {
+    transform: translateY(-4px);
+    background-color: white;
+    box-shadow: var(--detalle-shadow-md);
+    border-color: rgba(13, 110, 253, 0.1);
+}
+
+.detalle-habitacion-page .servicio-icono {
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(13, 110, 253, 0.1);
+    margin-right: 1rem;
+    transition: var(--detalle-transition);
+}
+
+.detalle-habitacion-page .servicio-item:hover .servicio-icono {
+    background-color: var(--color-primary);
+    color: white;
+    transform: scale(1.1);
+}
+
+.detalle-habitacion-page .servicio-nombre {
+    text-transform: capitalize;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-gray-700);
+}
+
+/* Tarjeta de reserva */
+.detalle-habitacion-page .reserva-card {
+    border-radius: var(--detalle-border-radius);
+    overflow: hidden;
+    animation: detalleHabFadeIn 0.8s var(--detalle-transition);
+    z-index: 4;
+    box-shadow: var(--detalle-shadow-lg);
+    border: 1px solid var(--color-gray-200);
+}
+
+/* Ajuste crítico para el posicionamiento sticky */
+.detalle-habitacion-page .reserva-card.sticky-lg-top {
+    top: 100px !important;
+    /* Ajustado para dar espacio al navbar */
+}
+
+@media (max-width: 991.98px) {
+    .detalle-habitacion-page .reserva-card.sticky-lg-top {
+        position: static !important;
+        top: auto !important;
+    }
+}
+
+.detalle-habitacion-page .reserva-card .card-header {
+    background-color: var(--color-primary);
+    border: none;
+    padding: 1.5rem 1rem;
+}
+
+.detalle-habitacion-page .reserva-card .card-header h3 {
+    margin-bottom: 0;
+    color: white;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.detalle-habitacion-page .reserva-card .card-header h3::after {
+    display: none;
+}
+
+.detalle-habitacion-page .reserva-card .card-body {
+    padding: 1.75rem;
+}
+
+.detalle-habitacion-page .precio-resumen {
+    position: relative;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.detalle-habitacion-page .precio-resumen::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    right: 25%;
+    height: 1px;
+    background-color: var(--color-gray-200);
+}
+
+.detalle-habitacion-page .precio-valor-grande {
+    font-size: 2.75rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-dark);
+    line-height: 1;
+}
+
+.detalle-habitacion-page .precio-periodo {
+    font-size: 1rem;
+    color: var(--color-gray-600);
+    font-weight: var(--font-weight-medium);
+}
+
+.detalle-habitacion-page .reservar-btn {
+    border-radius: 50px;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.5px;
+    transition: all 0.4s var(--detalle-transition);
+    text-transform: uppercase;
+    font-size: 1.125rem;
+}
+
+.detalle-habitacion-page .reservar-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+}
+
+.detalle-habitacion-page .reservar-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.detalle-habitacion-page .resumen-reserva {
+    background-color: var(--color-gray-100);
+    padding: 1.25rem;
+    border-radius: var(--detalle-border-radius);
+    box-shadow: var(--detalle-shadow-sm);
+    font-size: 0.95rem;
+    border: 1px solid var(--color-gray-200);
+}
+
+.detalle-habitacion-page .resumen-reserva .d-flex {
+    margin-bottom: 0.75rem;
+}
+
+.detalle-habitacion-page .resumen-reserva .fw-bold {
+    font-size: 1.1rem;
+    color: var(--color-primary-dark);
+}
+
+/* Form controls */
+.detalle-habitacion-page .reserva-card .form-label {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-gray-700);
+    margin-bottom: 0.5rem;
+}
+
+.detalle-habitacion-page .reserva-card .form-control,
+.detalle-habitacion-page .reserva-card .form-select {
+    padding: 0.75rem;
+    border-radius: var(--detalle-border-radius);
+    border-color: var(--color-gray-200);
+    transition: var(--detalle-transition);
+}
+
+.detalle-habitacion-page .reserva-card .form-control:focus,
+.detalle-habitacion-page .reserva-card .form-select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+/* Políticas y ListGroup */
+.detalle-habitacion-page .politicas-habitacion .card {
+    transition: var(--detalle-transition);
+    height: 100%;
+}
+
+.detalle-habitacion-page .politicas-habitacion .card:hover {
+    box-shadow: var(--detalle-shadow-md) !important;
+    transform: translateY(-5px);
+}
+
+.detalle-habitacion-page .politicas-habitacion .list-group-item {
+    padding: 0.75rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detalle-habitacion-page .politicas-habitacion .badge {
+    font-weight: var(--font-weight-medium);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--detalle-border-radius);
+}
+
+/* Media queries adaptados para todos los tamaños */
+@media (max-width: 1199.98px) {
+    .detalle-habitacion-page .imagen-principal img {
+        height: 400px;
+    }
+
+    .detalle-habitacion-page .precio-valor-grande {
+        font-size: 2.25rem;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .detalle-habitacion-page .imagen-principal img {
+        height: 350px;
+    }
+
+    .detalle-habitacion-page .descripcion-habitacion,
+    .detalle-habitacion-page .servicios-habitacion,
+    .detalle-habitacion-page .politicas-habitacion {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .detalle-habitacion-page .imagen-principal img {
+        height: 280px;
+    }
+
+    .detalle-habitacion-page .miniatura img {
+        height: 65px;
+    }
+
+    .detalle-habitacion-page h1 {
+        font-size: 1.75rem;
+    }
+
+    .detalle-habitacion-page .precio-container {
+        margin-top: 1rem;
+        align-self: flex-start;
+        width: 100%;
+        align-items: center;
+    }
+
+    .detalle-habitacion-page .servicio-item {
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .detalle-habitacion-page .breadcrumb-container {
+        padding: 0.5rem 0;
+    }
+
+    .detalle-habitacion-page .galeria-habitacion {
+        margin-top: 1rem;
+    }
+
+    .detalle-habitacion-page .imagen-principal img {
+        height: 220px;
+    }
+
+    .detalle-habitacion-page .miniatura img {
+        height: 50px;
+    }
+
+    .detalle-habitacion-page .caracteristicas-basicas .card {
+        margin-bottom: 1rem !important;
+    }
+
+    .detalle-habitacion-page .reserva-card .card-body {
+        padding: 1.25rem;
+    }
+
+    .detalle-habitacion-page .precio-valor-grande {
+        font-size: 2rem;
+    }
+}
+
+/* Sombreado sutil para las cards */
+.detalle-habitacion-page .card {
+    box-shadow: var(--detalle-shadow-sm);
+}
+
+/* Evitar problema con botones */
+.detalle-habitacion-page .btn:active:focus:not(:disabled) {
+    box-shadow: none;
+}
+
+/* Animación para el formulario */
+.detalle-habitacion-page .form-group {
+    transition: transform 0.3s ease;
+}
+
+.detalle-habitacion-page .form-group:focus-within {
+    transform: translateY(-2px);
+}
