@@ -1,12 +1,10 @@
-import axios from 'axios';
-
 const BASE_URL = 'http://localhost:3001';
 
 export const clientesApi = {
     obtenerClientes: async () => {
         try {
-            const respuesta = await axios.get(`${BASE_URL}/clientes`);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/clientes`);
+            return await respuesta.json();
         } catch (error) {
             console.error('Error al obtener clientes:', error);
             throw error;
@@ -15,8 +13,8 @@ export const clientesApi = {
 
     obtenerClientePorId: async (id) => {
         try {
-            const respuesta = await axios.get(`${BASE_URL}/clientes/${id}`);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/clientes/${id}`);
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al obtener cliente con ID ${id}:`, error);
             throw error;
@@ -25,8 +23,8 @@ export const clientesApi = {
 
     obtenerClientePorEmail: async (email) => {
         try {
-            const respuesta = await axios.get(`${BASE_URL}/clientes/email/${email}`);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/clientes/email/${email}`);
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al obtener cliente con email ${email}:`, error);
             throw error;
@@ -35,8 +33,14 @@ export const clientesApi = {
 
     crearCliente: async (datosCliente) => {
         try {
-            const respuesta = await axios.post(`${BASE_URL}/clientes`, datosCliente);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/clientes`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(datosCliente)
+            });
+            return await respuesta.json();
         } catch (error) {
             console.error('Error al crear cliente:', error);
             throw error;
@@ -45,8 +49,14 @@ export const clientesApi = {
 
     actualizarCliente: async (id, datosCliente) => {
         try {
-            const respuesta = await axios.put(`${BASE_URL}/clientes/${id}`, datosCliente);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/clientes/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(datosCliente)
+            });
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al actualizar cliente con ID ${id}:`, error);
             throw error;
@@ -55,8 +65,10 @@ export const clientesApi = {
 
     eliminarCliente: async (id) => {
         try {
-            const respuesta = await axios.delete(`${BASE_URL}/clientes/${id}`);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/clientes/${id}`, {
+                method: 'DELETE'
+            });
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al eliminar cliente con ID ${id}:`, error);
             throw error;
@@ -65,8 +77,14 @@ export const clientesApi = {
 
     actualizarEstadoCliente: async (id, nuevoEstado) => {
         try {
-            const respuesta = await axios.patch(`${BASE_URL}/clientes/${id}/estado`, { estado: nuevoEstado });
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/clientes/${id}/estado`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ estado: nuevoEstado })
+            });
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al actualizar estado de cliente con ID ${id}:`, error);
             throw error;
@@ -75,12 +93,11 @@ export const clientesApi = {
 
     subirImagenPerfil: async (id, formData) => {
         try {
-            const respuesta = await axios.post(`${BASE_URL}/clientes/${id}/imagen`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+            const respuesta = await fetch(`${BASE_URL}/clientes/${id}/imagen`, {
+                method: 'POST',
+                body: formData
             });
-            return respuesta.data;
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al subir imagen de perfil para cliente con ID ${id}:`, error);
             throw error;
@@ -89,11 +106,18 @@ export const clientesApi = {
 
     obtenerReservasCliente: async (id) => {
         try {
-            const respuesta = await axios.get(`${BASE_URL}/clientes/${id}/reservas`);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/clientes/${id}/reservas`);
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al obtener reservas del cliente con ID ${id}:`, error);
             throw error;
         }
     }
 };
+export default defineConfig({
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, './src')
+        }
+    }
+})

@@ -1,0 +1,164 @@
+/* Estilos para el componente HabitacionCard */
+
+/* Tarjeta de habitación */
+.room-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.room-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Animación de entrada */
+.animation-card {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Imagen y overlay */
+.room-image {
+    transition: transform 0.5s ease;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.room-card:hover .room-image {
+    transform: scale(1.05);
+}
+
+.room-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.room-image-overlay.visible {
+    opacity: 1;
+}
+
+.quick-view-btn {
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-weight: 500;
+    transform: translateY(20px);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.room-image-overlay.visible .quick-view-btn {
+    transform: translateY(0);
+}
+
+/* Badges */
+.status-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 50px;
+    z-index: 10;
+}
+
+.tipo-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 50px;
+    z-index: 10;
+}
+
+/* Precio */
+.precio-tag {
+    position: absolute;
+    bottom: -15px;
+    right: 20px;
+    background-color: #0d6efd;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-weight: 600;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.precio-valor {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.precio-periodo {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* Contenido */
+.font-medium {
+    font-weight: 600;
+}
+
+.description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.9rem;
+}
+
+/* Servicios */
+.servicios-container {
+    margin-top: auto;
+}
+
+.servicio-badge {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.servicio-badge:hover {
+    background-color: #e9ecef;
+}
+
+.servicio-badge i {
+    font-size: 1rem;
+    color: #0d6efd;
+}
+
+.servicio-badge-more {
+    background-color: #e9ecef;
+    font-weight: 600;
+    color: #6c757d;
+}
+
+/* Botón de reserva */
+.reserve-btn {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}

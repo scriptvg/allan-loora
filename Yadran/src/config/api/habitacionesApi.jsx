@@ -1,12 +1,10 @@
-import axios from 'axios';
-
 const BASE_URL = 'http://localhost:3001';
 
 export const habitacionesApi = {
     obtenerHabitaciones: async () => {
         try {
-            const respuesta = await axios.get(`${BASE_URL}/habitaciones`);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/habitaciones`);
+            return await respuesta.json();
         } catch (error) {
             console.error('Error al obtener habitaciones:', error);
             throw error;
@@ -15,8 +13,8 @@ export const habitacionesApi = {
 
     obtenerHabitacionPorId: async (id) => {
         try {
-            const respuesta = await axios.get(`${BASE_URL}/habitaciones/${id}`);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/habitaciones/${id}`);
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al obtener habitación con ID ${id}:`, error);
             throw error;
@@ -25,8 +23,14 @@ export const habitacionesApi = {
 
     crearHabitacion: async (datosHabitacion) => {
         try {
-            const respuesta = await axios.post(`${BASE_URL}/habitaciones`, datosHabitacion);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/habitaciones`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(datosHabitacion)
+            });
+            return await respuesta.json();
         } catch (error) {
             console.error('Error al crear habitación:', error);
             throw error;
@@ -35,8 +39,14 @@ export const habitacionesApi = {
 
     actualizarHabitacion: async (id, datosHabitacion) => {
         try {
-            const respuesta = await axios.put(`${BASE_URL}/habitaciones/${id}`, datosHabitacion);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/habitaciones/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(datosHabitacion)
+            });
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al actualizar habitación con ID ${id}:`, error);
             throw error;
@@ -45,8 +55,10 @@ export const habitacionesApi = {
 
     eliminarHabitacion: async (id) => {
         try {
-            const respuesta = await axios.delete(`${BASE_URL}/habitaciones/${id}`);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/habitaciones/${id}`, {
+                method: 'DELETE'
+            });
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al eliminar habitación con ID ${id}:`, error);
             throw error;
@@ -55,8 +67,14 @@ export const habitacionesApi = {
 
     actualizarEstadoHabitacion: async (id, nuevoEstado) => {
         try {
-            const respuesta = await axios.patch(`${BASE_URL}/habitaciones/${id}/estado`, { estado: nuevoEstado });
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/habitaciones/${id}/estado`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ estado: nuevoEstado })
+            });
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al actualizar estado de habitación con ID ${id}:`, error);
             throw error;
@@ -65,12 +83,11 @@ export const habitacionesApi = {
 
     subirImagenesHabitacion: async (id, formData) => {
         try {
-            const respuesta = await axios.post(`${BASE_URL}/habitaciones/${id}/imagenes`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+            const respuesta = await fetch(`${BASE_URL}/habitaciones/${id}/imagenes`, {
+                method: 'POST',
+                body: formData
             });
-            return respuesta.data;
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al subir imágenes para habitación con ID ${id}:`, error);
             throw error;
@@ -79,10 +96,14 @@ export const habitacionesApi = {
 
     eliminarImagenHabitacion: async (id, imgUrl) => {
         try {
-            const respuesta = await axios.delete(`${BASE_URL}/habitaciones/${id}/imagenes`, {
-                data: { imagenUrl: imgUrl }
+            const respuesta = await fetch(`${BASE_URL}/habitaciones/${id}/imagenes`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ imagenUrl: imgUrl })
             });
-            return respuesta.data;
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al eliminar imagen de habitación con ID ${id}:`, error);
             throw error;
@@ -91,8 +112,9 @@ export const habitacionesApi = {
 
     filtrarHabitaciones: async (filtros) => {
         try {
-            const respuesta = await axios.get(`${BASE_URL}/habitaciones/filtrar`, { params: filtros });
-            return respuesta.data;
+            const queryParams = new URLSearchParams(filtros).toString();
+            const respuesta = await fetch(`${BASE_URL}/habitaciones/filtrar?${queryParams}`);
+            return await respuesta.json();
         } catch (error) {
             console.error('Error al filtrar habitaciones:', error);
             throw error;

@@ -21,21 +21,22 @@ import NotFound from '../../pages/NotFound';
 
 // Páginas administrativas
 import AdminDashboard from '../../pages/admin/Dashboard';
-import AdminHabitaciones from '../../pages/admin/habitaciones/Habitaciones';
-import AdminHabitacionesForm from '../../pages/admin/habitaciones/HabitacionForm';
-import AdminServicios from '../../pages/admin/servicios/Servicios';
-import AdminServiciosForm from '../../pages/admin/servicios/ServicioForm';
-import AdminClientes from '../../pages/admin/clientes/Clientes';
-import AdminClientesForm from '../../pages/admin/clientes/ClienteForm';
-import AdminReservas from '../../pages/admin/reservas/Reservas';
-import AdminReservasForm from '../../pages/admin/reservas/ReservaForm';
-import AdminConfiguracion from '../../pages/admin/Configuracion';
+import AdminHabitaciones from '../../pages/admin/habitaciones/Habitaciones.jsx';
+import AdminHabitacionesForm from '../../pages/admin/habitaciones/HabitacionForm.jsx';
+import AdminServicios from '../../pages/admin/servicios/Servicios.jsx';
+import AdminServiciosForm from '../../pages/admin/servicios/ServicioForm.jsx';
+import AdminClientes from '../../pages/admin/clientes/Cliente.jsx';
+import AdminClientesForm from '../../pages/admin/clientes/ClienteForm.jsx';
+import AdminReservas from '../../pages/admin/reservas/Reservas.jsx';
+import AdminReservasForm from '../../pages/admin/reservas/ReservaForm.jsx';
+import AdminConfiguracion from '../../pages/admin/Configuracion.jsx';
 
 // Páginas cliente
 import ClienteDashboard from '../../pages/cliente/Dashboard';
 import ClienteReservas from '../../pages/cliente/reservas/Reservas';
 import ClienteNuevaReserva from '../../pages/cliente/reservas/NuevaReserva';
 import ClienteServicios from '../../pages/cliente/servicios/Servicios';
+import ReservaServicio from '../../pages/cliente/servicios/ReservaServicio';
 import ClientePerfil from '../../pages/cliente/Perfil';
 
 // Componentes para rutas protegidas
@@ -114,6 +115,7 @@ const Routing = () => {
                     <Route path="reservas" element={<ClienteReservas />} />
                     <Route path="reservas/nueva" element={<ClienteNuevaReserva />} />
                     <Route path="servicios" element={<ClienteServicios />} />
+                    <Route path="servicios/reservar/:id" element={<ReservaServicio />} />
                     <Route path="perfil" element={<ClientePerfil />} />
                 </Route>
 

@@ -1,12 +1,10 @@
-import axios from 'axios';
-
 const BASE_URL = 'http://localhost:3001';
 
 export const usuariosApi = {
     obtenerUsuarios: async () => {
         try {
-            const respuesta = await axios.get(`${BASE_URL}/usuarios`);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/usuarios`);
+            return await respuesta.json();
         } catch (error) {
             console.error('Error al obtener usuarios:', error);
             throw error;
@@ -15,8 +13,8 @@ export const usuariosApi = {
 
     obtenerUsuarioPorId: async (id) => {
         try {
-            const respuesta = await axios.get(`${BASE_URL}/usuarios/${id}`);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/usuarios/${id}`);
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al obtener usuario con ID ${id}:`, error);
             throw error;
@@ -25,8 +23,14 @@ export const usuariosApi = {
 
     iniciarSesion: async (email, contrasenia) => {
         try {
-            const respuesta = await axios.post(`${BASE_URL}/auth/login`, { email, contrasenia });
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/auth/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, contrasenia })
+            });
+            return await respuesta.json();
         } catch (error) {
             console.error('Error al iniciar sesión:', error);
             throw error;
@@ -35,8 +39,14 @@ export const usuariosApi = {
 
     registrarUsuario: async (datosUsuario) => {
         try {
-            const respuesta = await axios.post(`${BASE_URL}/auth/register`, datosUsuario);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/auth/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(datosUsuario)
+            });
+            return await respuesta.json();
         } catch (error) {
             console.error('Error al registrar usuario:', error);
             throw error;
@@ -45,8 +55,14 @@ export const usuariosApi = {
 
     actualizarUsuario: async (id, datosUsuario) => {
         try {
-            const respuesta = await axios.put(`${BASE_URL}/usuarios/${id}`, datosUsuario);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/usuarios/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(datosUsuario)
+            });
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al actualizar usuario con ID ${id}:`, error);
             throw error;
@@ -55,11 +71,14 @@ export const usuariosApi = {
 
     cambiarContrasenia: async (id, contraseniaActual, nuevaContrasenia) => {
         try {
-            const respuesta = await axios.patch(`${BASE_URL}/usuarios/${id}/contrasenia`, {
-                contraseniaActual,
-                nuevaContrasenia
+            const respuesta = await fetch(`${BASE_URL}/usuarios/${id}/contrasenia`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ contraseniaActual, nuevaContrasenia })
             });
-            return respuesta.data;
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al cambiar contraseña del usuario con ID ${id}:`, error);
             throw error;
@@ -68,8 +87,10 @@ export const usuariosApi = {
 
     eliminarUsuario: async (id) => {
         try {
-            const respuesta = await axios.delete(`${BASE_URL}/usuarios/${id}`);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/usuarios/${id}`, {
+                method: 'DELETE'
+            });
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al eliminar usuario con ID ${id}:`, error);
             throw error;
@@ -78,8 +99,14 @@ export const usuariosApi = {
 
     actualizarRol: async (id, nuevoRol) => {
         try {
-            const respuesta = await axios.patch(`${BASE_URL}/usuarios/${id}/rol`, { rol: nuevoRol });
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/usuarios/${id}/rol`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ rol: nuevoRol })
+            });
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al actualizar rol del usuario con ID ${id}:`, error);
             throw error;
@@ -88,8 +115,14 @@ export const usuariosApi = {
 
     recuperarContrasenia: async (email) => {
         try {
-            const respuesta = await axios.post(`${BASE_URL}/auth/recuperar-contrasenia`, { email });
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/auth/recuperar-contrasenia`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            });
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al enviar correo de recuperación a ${email}:`, error);
             throw error;
@@ -98,11 +131,14 @@ export const usuariosApi = {
 
     resetearContrasenia: async (token, nuevaContrasenia) => {
         try {
-            const respuesta = await axios.post(`${BASE_URL}/auth/resetear-contrasenia`, {
-                token,
-                nuevaContrasenia
+            const respuesta = await fetch(`${BASE_URL}/auth/resetear-contrasenia`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ token, nuevaContrasenia })
             });
-            return respuesta.data;
+            return await respuesta.json();
         } catch (error) {
             console.error('Error al resetear contraseña:', error);
             throw error;
@@ -111,8 +147,8 @@ export const usuariosApi = {
 
     verificarToken: async (token) => {
         try {
-            const respuesta = await axios.get(`${BASE_URL}/auth/verificar-token/${token}`);
-            return respuesta.data;
+            const respuesta = await fetch(`${BASE_URL}/auth/verificar-token/${token}`);
+            return await respuesta.json();
         } catch (error) {
             console.error('Error al verificar token:', error);
             throw error;
@@ -121,12 +157,11 @@ export const usuariosApi = {
 
     subirImagenPerfil: async (id, formData) => {
         try {
-            const respuesta = await axios.post(`${BASE_URL}/usuarios/${id}/imagen`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+            const respuesta = await fetch(`${BASE_URL}/usuarios/${id}/imagen`, {
+                method: 'POST',
+                body: formData
             });
-            return respuesta.data;
+            return await respuesta.json();
         } catch (error) {
             console.error(`Error al subir imagen de perfil para usuario con ID ${id}:`, error);
             throw error;

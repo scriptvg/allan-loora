@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import ContactForm from './public/components/contacto/components/ContactForm';
 import ContactInfo from './public/components/contacto/components/ContactInfo';
-import ContactMap from './public/components/contacto/components/ContactMap';
+import ContactMap from './public/components/contacto/MapComponent';
 import './public/components/contacto/styles/Contacto.css';
 
 const Contacto = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { People, Door, Ruler } from 'react-bootstrap-icons';
+import { People, Door } from 'react-bootstrap-icons';
 
 const HabitacionCard = ({ habitacion }) => {
     // Manejar imagen predeterminada si no hay imágenes disponibles
@@ -76,7 +76,7 @@ const HabitacionCard = ({ habitacion }) => {
 
                     {habitacion.tamaño && (
                         <div className="caracteristica">
-                            <Ruler className="me-2" />
+                            <i className="bi bi-rulers me-2"></i>
                             <span>Tamaño: {habitacion.tamaño} m²</span>
                         </div>
                     )}

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container, Spinner, Alert } from 'react-bootstrap';
-import ServicesHero from './components/servicios/components/ServicesHero';
-import FeaturedServices from './components/servicios/components/FeaturedServices';
-import ServiceCategories from './components/servicios/components/ServiceCategories';
-import CallToAction from './components/servicios/components/CallToAction';
-import useServicesPage from './components/servicios/hooks/useServicesPage';
-import LoadingSpinner from './components/servicios/components/LoadingSpinner';
-import './components/servicios/styles/Servicios.css';
+import ServicesHero from './public/components/servicios/components/ServicesHero';
+import FeaturedServices from './public/components/servicios/components/FeaturedServices';
+import ServiceCategories from './public/components/servicios/components/ServiceCategories';
+import CallToAction from './public/components/servicios/components/CallToAction';
+import useServicesPage from './public/components/servicios/hooks/useServicesPage';
+import LoadingSpinner from './public/components/servicios/components/LoadingSpinner';
+import './public/components/servicios/styles/Servicios.css';
 
 const Servicios = () => {
     const { services, featuredServices, groupedServices, isLoading, error } = useServicesPage();

@@ -7,7 +7,7 @@ import FeaturedServices from './components/servicios/components/FeaturedServices
 import ServiceCategories from './components/servicios/components/ServiceCategories';
 import CallToAction from './components/servicios/components/CallToAction';
 import LoadingSpinner from './components/servicios/components/LoadingSpinner';
-import useServicesPage from './components/servicios/hooks/hooks/useServicesPage';
+import useServicesPage from './components/servicios/hooks/useServicesPage';
 import useScrollAnimation from './components/contacto/hooks/useScrollAnimation';
 import './components/servicios/styles/Servicios.css';
 
